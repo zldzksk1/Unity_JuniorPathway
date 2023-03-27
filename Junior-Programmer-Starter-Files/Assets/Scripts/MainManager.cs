@@ -5,7 +5,9 @@ using System.IO;
 
 public class MainManager : MonoBehaviour
 {
-    public static MainManager Instance;
+    public static MainManager Instance { get; private set; } // add getter to the end of the line
+    
+    
     public Color TeamColor;
 
     [System.Serializable]

@@ -10,7 +10,22 @@ public class ResourcePile : Building
 {
     public ResourceItem Item;
 
-    public float ProductionSpeed = 0.5f;
+    private float m_ProductionSpeed = 0.5f; // add new private backing field
+    public float ProductionSpeed
+    {
+        get { return m_ProductionSpeed; } // getter returns backing field
+        set
+        {
+            if (value < 0.0f)
+            {
+                Debug.LogError("You can't set a negative production speed!");
+            }
+            else
+            {
+                m_ProductionSpeed = value; // original setter now in if/else statement
+            } 
+        }    // setter uses backing field
+    }
 
     private float m_CurrentProduction = 0.0f;
 
@@ -33,7 +48,6 @@ public class ResourcePile : Building
     public override string GetData()
     {
         return $"Producing at the speed of {ProductionSpeed}/s";
-        
     }
     
     
